@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProcessing.Models
+namespace OrderProcessing.Models.Context
 {
     public interface IOrderProcessingContext : IDisposable
     {

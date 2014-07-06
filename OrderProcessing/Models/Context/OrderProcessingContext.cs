@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace OrderProcessing.Models
+namespace OrderProcessing.Models.Context
 {
     public class OrderProcessingContext : DbContext, IOrderProcessingContext
     {

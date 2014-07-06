@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace OrderProcessing.Models
+namespace OrderProcessing.Models.Context
 {
     public class ModelsModule : NinjectModule
     {

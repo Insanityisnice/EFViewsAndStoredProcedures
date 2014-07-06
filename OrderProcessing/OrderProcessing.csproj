@@ -174,15 +174,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\Entities\Configuration\CustomerMap.cs" />
     <Compile Include="Models\Entities\Configuration\OrderItemMap.cs" />
     <Compile Include="Models\Entities\Configuration\OrderMap.cs" />
     <Compile Include="Models\Entities\Customer.cs" />
     <Compile Include="Models\Entities\Order.cs" />
     <Compile Include="Models\Entities\OrderItem.cs" />
-    <Compile Include="Models\IOrderProcessingContext.cs" />
-    <Compile Include="Models\ModelsModule.cs" />
-    <Compile Include="Models\OrderProcessingContext.cs" />
+    <Compile Include="Models\Context\IOrderProcessingContext.cs" />
+    <Compile Include="Models\Context\ModelsModule.cs" />
+    <Compile Include="Models\Context\OrderProcessingContext.cs" />
+    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
