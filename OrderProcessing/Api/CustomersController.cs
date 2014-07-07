@@ -17,6 +17,7 @@ namespace OrderProcessing.Api
     public class CustomersController : ApiController
     {
         private IOrderProcessingContext orderProcessingContext;
+        private const string CustomersUri = "api/customers/{0}/{1}/{2}";
 
         public CustomersController(IOrderProcessingContext orderProcessingContext)
         {
@@ -24,9 +25,22 @@ namespace OrderProcessing.Api
         }
 
         // GET: api/Customers
-        public IEnumerable<CustomerModel> GetCustomers()
+        [Route("api/customers")]
+        [Route("api/customers/{pageNumber}/{pageSize}")]
+        public PageResult<CustomerModel> GetCustomers(int pageNumber = 1, int pageSize = 10)
         {
-            return orderProcessingContext.Customers.Select(c => new CustomerModel { Id = c.Id, Name = c.Name });
+            var pageIndex = pageNumber - 1;
+
+            //NOTE: Total item count for the PageResult
+            var totalCustomers = orderProcessingContext.Customers.Count();
+            
+            if (pageIndex < 0 || pageNumber * pageSize > totalCustomers)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+
+            var customers = orderProcessingContext.Customers.OrderBy(c => c.Id).Skip(pageIndex * pageSize).Take(pageSize).Select(c => new CustomerModel { Id = c.Id, Name = c.Name });
+            return new PageResult<CustomerModel>(customers, totalCustomers, pageIndex == 0 ? string.Empty : string.Format(CustomersUri, pageNumber - 1, pageSize, ""), pageNumber * pageSize <= totalCustomers ? string.Format(CustomersUri, pageNumber + 1, pageSize, "") : string.Empty);
         }
 
         // GET: api/Customers/5
@@ -108,6 +122,7 @@ namespace OrderProcessing.Api
             return Ok(customer);
         }
 
+        //NOTE: Use of Route Attribute
         [ResponseType(typeof(OrderModel))]
         [Route("api/Customers/{id}/Orders")]
         public IEnumerable<OrderModel> GetOrders(int id)
