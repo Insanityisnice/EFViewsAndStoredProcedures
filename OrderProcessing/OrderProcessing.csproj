@@ -45,13 +45,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Linq2Rest">
-      <HintPath>..\packages\Linq2Rest.4.0.1.0\lib\Net45\Linq2Rest.dll</HintPath>
-    </Reference>
-    <Reference Include="Linq2Rest.Mvc">
-      <HintPath>..\packages\Linq2Rest.Mvc.3.3.4.0\lib\Net45\Linq2Rest.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Net.Http.WebApi.OData">
+      <HintPath>..\packages\Net.Http.WebApi.OData.2.1.0\lib\net45\Net.Http.WebApi.OData.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>

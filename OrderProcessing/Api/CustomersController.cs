@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using OrderProcessing.Models;
 using OrderProcessing.Models.Entities;
 using OrderProcessing.Models.Context;
+using Net.Http.WebApi.OData.Query;
 
 namespace OrderProcessing.Api
 {
@@ -27,7 +28,7 @@ namespace OrderProcessing.Api
         // GET: api/Customers
         [Route("api/customers")]
         [Route("api/customers/{pageNumber}/{pageSize}")]
-        public PageResult<CustomerModel> GetCustomers(int pageNumber = 1, int pageSize = 10)
+        public PageResult<CustomerModel> GetCustomers(int pageNumber = 1, int pageSize = 10, ODataQueryOptions queryOptions = null)
         {
             var pageIndex = pageNumber - 1;
 
